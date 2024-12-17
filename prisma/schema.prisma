@@ -22,6 +22,7 @@ model User {
     role                  UserRole               @default(USER)
     isActive              Boolean                @default(true)
     deactivatedAt         DateTime? // Date de désactivation
+    isDeleted             Boolean                @default(false)
     isTwoFactorEnabled    Boolean                @default(false)
     twoFactorConfirmation TwoFactorConfirmation?
     accounts              Account[]
