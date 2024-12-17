@@ -1,0 +1,122 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum UserRole {
+    ADMIN
+    USER
+}
+
+model User {
+    id                    String                 @id @default(cuid())
+    name                  String?
+    email                 String?                @unique
+    emailVerified         DateTime?
+    image                 String?
+    password              String?
+    role                  UserRole               @default(USER)
+    isActive              Boolean                @default(true)
+    deactivatedAt         DateTime? // Date de désactivation
+    isTwoFactorEnabled    Boolean                @default(false)
+    twoFactorConfirmation TwoFactorConfirmation?
+    accounts              Account[]
+    sessions              Session[]
+    userDevices           UserDevice[]
+    FailedLoginAttempt    FailedLoginAttempt[]
+}
+
+model Account {
+    id                String  @id @default(cuid())
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? @db.Text
+    session_state     String?
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+}
+
+model Session {
+    id                  String   @id @default(cuid())
+    userId              String
+    sessionToken        String   @unique
+    refreshToken        String   @unique // Token de rafraîchissement haché
+    expires             DateTime // Date d'expiration du token
+    refreshTokenExpires DateTime // Expiration du token de rafraîchissement
+    lastActivity        DateTime // Date de la dernière activité utilisateur
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+    id      String   @id @default(cuid())
+    email   String
+    token   String   @unique
+    expires DateTime
+    tokenId String   @unique
+
+    @@unique([email, token])
+}
+
+model PasswordResetToken {
+    id      String   @id @default(cuid())
+    email   String
+    token   String   @unique
+    expires DateTime
+    tokenId String   @unique
+
+    @@unique([email, token])
+}
+
+model TwoFactorToken {
+    id      String   @id @default(cuid())
+    email   String
+    token   String   @unique
+    expires DateTime
+
+    @@unique([email, token])
+}
+
+model TwoFactorConfirmation {
+    id String @id @default(cuid())
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([userId])
+}
+
+model FailedLoginAttempt {
+    id        String   @id @default(cuid())
+    userId    String // Clé étrangère pour l'utilisateur
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    attemptAt DateTime @default(now()) // Timestamp de la tentative
+}
+
+model UserDevice {
+    id        String   @id @default(cuid())
+    userId    String // Clé étrangère liée à l'utilisateur
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    device    String? // Informations sur l'appareil (marque, modèle)
+    os        String? // Informations sur le système d'exploitation
+    browser   String? // Informations sur le navigateur
+    ipAddress String? // Adresse IP de l'utilisateur
+    latitude  Float? // Latitude de la géolocalisation
+    longitude Float? // Longitude de la géolocalisation
+    city      String? // Ville obtenue à partir de la géolocalisation
+    country   String? // Pays obtenu à partir de la géolocalisation
+    createdAt DateTime @default(now()) // Date de la création de l'enregistrement
+}
