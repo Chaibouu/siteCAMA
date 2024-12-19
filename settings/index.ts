@@ -1,8 +1,8 @@
 const appConfig = {
-  appName: "Ecole Polytechnique de Niamey",
-  websiteTitle: "Ecole Polytechnique de Niamey",
-  websiteDescription:"l’EPN (Ecole Polytechnique de Niamey) est une école de formation supérieure citoyenne et éco-consciente",
-  logoUrl: "/Ecole_Polytechnique_de_Niamey.png",
+  appName: "CAMA",
+  websiteTitle: "CAMA",
+  websiteDescription:"Pour tout vos besoin en plante et suivi des jardins",
+  logoUrl: "/logoo.png",
   sidebarClearlogoUrl: "/sahel_coders_logo.png",
   adminSidebarColor: "#1C2434",
   mailOptions: {

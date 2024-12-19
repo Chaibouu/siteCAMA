@@ -5,6 +5,7 @@ import React from "react"
 import { UserRole } from "@prisma/client"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
+import { Trash2 } from "lucide-react"
 
 interface deleteProps{
   id: string,
@@ -23,20 +24,30 @@ const Delete = ({id, title, deleteFnct}:deleteProps) => {
         mutationFn: deleteFnct,
         onSuccess: (data) => {
           setLoad(false);
-          
           if (data.message) {
-            queryClient.invalidateQueries({ queryKey: ["key"] });
-            toast.success(data.message, {
-              position: 'top-right',
-            });
-        } else if(data.error){
-            toast.error(data.error, {
+            queryClient.invalidateQueries({ queryKey: [title] });
+            // toast.success(data.message, {
+            //   position: 'top-right',
+            // });
+            toast(data.message, {
                 position: 'top-right',
+                style: {
+                    backgroundColor: '#0eda0e',
+                    color: 'white'
+                }
+            });
+          } else if(data.error){
+              toast(`Erreur : ${data.error}`, {
+                  position: 'top-right',
+                  style: {
+                    backgroundColor: "red",
+                    color: "white",
+                  },
               });
-        }
-      
+              document.getElementById("close")?.click();
+          }
           // Fermer le modal
-          document.getElementById("close")?.click();
+          document.getElementById('close')?.click()
         },
         onError: (error: Error) => {
           setLoad(false);
@@ -62,7 +73,8 @@ const Delete = ({id, title, deleteFnct}:deleteProps) => {
   return (
     <Dialog>
     <DialogTrigger asChild>
-      <Button variant={'destructive'}>Supprimer</Button>
+      {/* <Button variant={'destructive'}>Supprimer</Button> */}
+      <Trash2 className="cursor-pointer" color="#ea2a2a" />
     </DialogTrigger>
     <DialogContent className="sm:max-w-[435px]">
       <DialogHeader className="">

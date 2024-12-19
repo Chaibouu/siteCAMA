@@ -1,6 +1,4 @@
-import ButtonAddCycle from '@/components/Buttons/ButtonAddCycle'
-import TableCycle from '@/components/Tables/Table/Table'
-import { getAllCycles } from '@/utils/cycle'
+
 import React from 'react'
 
 
@@ -26,7 +24,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      <ButtonAddCycle/>
+      {/* <ButtonAddCycle/> */}
       {/* <TableCycle title="Les Cycles" subTitle="Tout les cycles"/> */}
     </div>
   )

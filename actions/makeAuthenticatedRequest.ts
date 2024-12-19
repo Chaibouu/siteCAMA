@@ -54,7 +54,9 @@ export async function makeAuthenticatedRequest(
         const response = await fetch(url, options);
 
         if (!response.ok) {
-          throw new Error(`Erreur lors de la requête : ${response.statusText}`);
+          const error = await response.json();
+          return error;
+          // throw new Error(`Erreur lors de la requête : ${response.statusText}`);
         }
 
         return await response.json(); // Retourner la réponse JSON si la requête réussit
@@ -90,13 +92,20 @@ export async function makeAuthenticatedRequest(
       const response = await fetch(url, options);
 
       if (!response.ok) {
-        throw new Error(`Erreur lors de la requête : ${response.statusText}`);
+        const error = await response.json();
+        return error;
+        // throw new Error(`Erreur lors de la requête : ${response.statusText}`);
+      }
+      // Vérifier si la réponse est un fichier binaire
+      const contentType = response.headers.get("Content-Type");
+      if (contentType?.includes("application/pdf")) {
+        return await response.blob(); // Retourner un Blob pour les fichiers binaires
       }
 
       return await response.json(); // Retourner la réponse JSON si la requête réussit
     } catch (error) {
-      console.error("Erreur lors du rafraîchissement du token:", error);
-      return NextResponse.json({ error: "Erreur lors du rafraîchissement" });
+      console.error("Erreur:", error);
+      return NextResponse.json({ error: "Erreur lors de la requête" });
     }
   } catch (error) {
     console.error("Erreur dans makeAuthenticatedRequest:", error);

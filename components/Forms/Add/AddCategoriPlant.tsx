@@ -8,30 +8,42 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '../../ui/input';
 import { Button } from '../../ui/button';
 import Configs from '@/configs/Configs';
-import { cycleSchema } from '@/schemas/Forms';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createCycle } from '@/utils/cycle';
+import { postCategoriPlant } from '@/actions/CategoriPlant';
+import { CategoriPlantSchema } from '@/schemas/Forms';
 
-interface updateProps{
-    id: string,
-  }
+interface AddCategoriPlantProps {
+    onClose: () => void; // Fonction pour fermer le dialog
+}
 
-const UpdateCycle = ({id}:updateProps) => {
+
+const AddCategoriPlant = ({ onClose }:AddCategoriPlantProps) => {
     const [isPending, setIsPending] = useState(false);
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
-        mutationFn: createCycle,
+        mutationFn: postCategoriPlant,
         onSuccess: (data) => {
-        queryClient.invalidateQueries({ queryKey: ['cycle'] });
-        setIsPending(false)
-        toast(data.message, {
-            position: 'top-right',
-            style: {
-                backgroundColor: 'green',
-                color: 'white'
-            }
-        });
+        if (data.message) {
+            queryClient.invalidateQueries({ queryKey: ['categoriplants'] });
+            setIsPending(false)
+            toast(data.message, {
+                position: 'top-right',
+                style: {
+                    backgroundColor: '#0eda0e',
+                    color: 'white'
+                }
+            });
+        } else if(data.error){
+            toast(`Erreur : ${data.error}`, {
+                position: 'top-right',
+                style: {
+                    backgroundColor: '#f03e3e',
+                    color: 'white'
+                }
+              });
+        }
+        onClose(); // Fermer le dialog après succès
         document.getElementById('close')?.click()
         // window.location.reload();
         },
@@ -40,7 +52,7 @@ const UpdateCycle = ({id}:updateProps) => {
         toast(`Erreur : ${error.message}`, {
             position: 'top-right',
             style: {
-                backgroundColor: 'red',
+                backgroundColor: '#f03e3e',
                 color: 'white'
             }
         });
@@ -51,44 +63,52 @@ const UpdateCycle = ({id}:updateProps) => {
 
     }
 
-    const form = useForm<z.infer<typeof cycleSchema>>({
-    resolver: zodResolver(cycleSchema),
+    const form = useForm<z.infer<typeof CategoriPlantSchema>>({
+    resolver: zodResolver(CategoriPlantSchema),
     defaultValues: defaultValue
     })
-    console.log(form.watch());
-    console.log(form.formState.errors);
+    // console.log(form.watch());
+    // console.log(form.formState.errors);
 
-    const onSubmit = async (data: z.infer<typeof cycleSchema>) => {
+    const onSubmit = async (data: z.infer<typeof CategoriPlantSchema>) => {
         setIsPending(true);
-        mutation.mutate(data.name)
-
+        let CategoriPlant = {
+            name: data.name,
+        }
+        try {
+        mutation.mutate(CategoriPlant)
+        } catch (error:any) {
+        toast(error)
+        }
     }
 
     
   return (
     <div>
         <Form {...form}>
-            <div><h1 className="text-2xl text-slate-500 font-bold text-center">Modifier un Cycle</h1></div>
+            <div><h1 className="text-2xl text-slate-500 font-bold text-center">Ajouter une Catégorie</h1></div>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                    <FormItem className=''>
-                        <FormLabel className='mt-2 text-lg text-slate-400 min-w-[200px]'>Cycle</FormLabel>
-                        <FormControl>
-                            <Input
-                            {...field}
-                            type="text"
-                            placeholder="Veuillez saisir le cycle"
-                            disabled={isPending}
-                            className="bg-white"
-                            />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
+                <div className='space-y-4'>
+                    <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                        <FormItem className=''>
+                            <FormLabel className='mt-2 text-lg text-slate-400 min-w-[200px]'>Catégorie<b className="text-red-500">*</b></FormLabel>
+                            <FormControl>
+                                <Input
+                                {...field}
+                                type="text"
+                                placeholder="Veuillez saisir une Catégorie"
+                                disabled={isPending}
+                                className="bg-white"
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                        )}
+                    />
+                </div>
                 <div>
                     <Button
                         type="submit"
@@ -118,7 +138,7 @@ const UpdateCycle = ({id}:updateProps) => {
                                 ></path>
                             </svg>
                         ) : (
-                            "Modifier un cycle"
+                            "Ajouté une Catégorie"
                         )}
                     </Button>
                 </div>
@@ -129,4 +149,4 @@ const UpdateCycle = ({id}:updateProps) => {
   )
 }
 
-export default UpdateCycle
+export default AddCategoriPlant

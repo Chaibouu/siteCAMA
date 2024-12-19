@@ -1,26 +1,33 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Plus, UserPlus } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
-import AddCycle from '../Forms/Add/AddCycle'
 import Configs from '@/configs/Configs'
-// import Configs from '@/configs/config'
+import AddPlant from '../Forms/Add/AddPlant'
 
 
 
-export default function ButtonAddCycle() {
+export default function ButtonAddPlant() {
+  const [isOpen, setIsOpen] = useState(false); // État pour ouvrir/fermer le dialog
+
+  const handleClose = () => {
+    setIsOpen(false); // Ferme le dialog
+  };
+
   return (
-        <Dialog >
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button 
                 className='flex items-center gap-2' 
                 style={{backgroundColor: Configs.SecondariColor}}
+                onClick={() => setIsOpen(true)} // Ouvrir le dialog
               >
-                  <Plus /> Ajouter un Cycle
+                  <Plus /> Ajouter une Plante
               </Button>
             </DialogTrigger>
             <DialogContent> 
-                <AddCycle/>
+                <AddPlant onClose={handleClose} />
             </DialogContent>
         </Dialog> 
   )

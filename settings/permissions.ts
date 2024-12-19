@@ -44,25 +44,25 @@ export const permissions: Record<string, Permission[]> = {
     { method: "DELETE", roles: ["ADMIN", "USER", "RH"] },
   ],
 
-  "/api/categories": [
+  "/api/categoriplant": [
     { method: "POST", roles: ["ADMIN", "USER", "RH"] },
     { method: "GET", roles: ["ADMIN", "USER", "RH"] },
   ],
 
-  "/api/categories/:id": [
+  "/api/categoriplant/:id": [
     { method: "PUT", roles: ["ADMIN", "USER", "RH"] },
     { method: "DELETE", roles: ["ADMIN", "USER", "RH"] },
   ],
 
-  "/api/transport-modes": [
+  "/api/plant": [
     { method: "POST", roles: ["ADMIN", "USER", "RH"] },
     { method: "GET", roles: ["ADMIN", "USER", "RH"] },
   ],
-
-  "/api/transport-modes/:id": [
+  "/api/plant/:id": [
     { method: "PUT", roles: ["ADMIN", "USER", "RH"] },
     { method: "DELETE", roles: ["ADMIN", "USER", "RH"] },
   ],
+
   "/api/notifications": [{ method: "GET", roles: ["ADMIN", "RH"] }],
   "/api/notifications/:id": [{ method: "PATCH", roles: ["ADMIN", "RH"] }],
   "/api/missions/grouped": [{ method: "POST", roles: ["ADMIN", "RH"] }],

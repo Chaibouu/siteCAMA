@@ -1,9 +1,7 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { FilePenLine, Plus, UserPlus } from 'lucide-react'
-import Configs from '@/configs/Configs'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import UpdateCycle from '@/components/Forms/Update/UpdateCycle'
+
 
 interface UpdateProps {
     id?: string; 
@@ -11,13 +9,17 @@ interface UpdateProps {
   }
 
 export default function Update({children}:UpdateProps) {
+
+    const [isOpen, setIsOpen] = useState(false); // État pour ouvrir/fermer le dialog
+  
+    const handleClose = () => {
+      setIsOpen(false); // Ferme le dialog
+    };
     
   return (
-        <Dialog >
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button className='flex items-center gap-2'>
-                <FilePenLine />
-              </Button>
+              <FilePenLine className="cursor-pointer" color="#306ced"/>
             </DialogTrigger>
             <DialogContent> 
                  {children} {/* <UpdateCycle id={id}/> */}

@@ -62,20 +62,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen,navigation }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-60 flex-col overflow-y-hidden bg-[#008000] duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-10 flex h-screen w-60 flex-col overflow-y-hidden bg-[#06b206] duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
-      <div className="flex items-center justify-between gap-2 px-6 py-2 lg:py-2">
+      <div className="flex items-center justify-center gap-2 px-6 py-2 lg:py-2">
         <Link href="/">
-          {/* <Image
-            width={176}
+          <Image
+            width={120}
             height={32}
             src={`${appConfig.logoUrl}`}
             alt="Logo"
-          /> */}
-          <h1 className="text-center text-[#DF7413] font-extrabold text-lg">Ecole Polytechnique <br /> de Niamey</h1>
+          />
+          {/* <h1 className="text-center text-[#DF7413] font-extrabold text-lg">Ecole Polytechnique <br /> de Niamey</h1> */}
         </Link>
 
         <button
@@ -108,11 +108,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen,navigation }: SidebarProps) => {
         <nav className="py-4 px-2 lg:px-2">
           {/* <!-- Menu Group --> */}
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+            {/* <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
               MENU
-            </h3>
+            </h3> */}
 
-            <ul className="mb-6 flex flex-col gap-1.5">
+            <ul className="flex flex-col gap-1.5">
               {/* <!-- Menu Item Dashboard --> */}
               {
                 navigation.map((item:NavigationItem, index) => (

@@ -121,3 +121,35 @@ model UserDevice {
     country   String? // Pays obtenu à partir de la géolocalisation
     createdAt DateTime @default(now()) // Date de la création de l'enregistrement
 }
+
+model Plant {
+  id          String   @id @default(uuid()) @map("id") // Identifiant unique
+  name        String   @db.VarChar(255) // Nom de la plante
+  price       String      // Prix de la plante en entier (en F)
+  rating      Float?    @default(0.0) // Note moyenne (calculée)
+  isDeleted   Boolean                @default(false)
+  imageUrl    String?   @db.Text // URL de l'image de la plante
+  createdAt   DateTime @default(now()) // Date de création de l'enregistrement
+  updatedAt   DateTime @updatedAt // Date de la dernière mise à jour
+  
+  // Relation avec Category
+  ratings     Rating[]
+  categoryId  String   // Clé étrangère
+  category    Category @relation(fields: [categoryId], references: [id]) // Relation avec Category
+}
+
+model Category {
+  id          String   @id @default(uuid()) @map("id")
+  name        String   @unique @db.VarChar(100) // Nom unique de la catégorie
+  isDeleted             Boolean                @default(false)
+  plants      Plant[]  // Relation inverse avec Plant
+}
+
+model Rating {
+  id          String    @id @default(uuid())
+  value       Int       // Valeur de la note (1-5)
+  userId      String?   // Optionnel : l'utilisateur qui a noté
+  plantId     String
+  plant       Plant     @relation(fields: [plantId], references: [id])
+  createdAt   DateTime  @default(now())
+}
