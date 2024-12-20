@@ -11,10 +11,16 @@ import UpdatePlant from "@/components/Forms/Update/UpdatePlant";
 // import UpdatePlant from "@/components/Forms/Update/UpdatePlant";
 // import { deletePlant, fetchPlant } from "@/actions/plants";
 
+interface categoriplant {
+  id: string;
+  name: string;
+}
 interface plant {
   id: string;
   name: string;
-  description: string;
+  price: string,
+  category: categoriplant,
+  imageUrl:  File | undefined, 
 }
 
 interface TableProps {

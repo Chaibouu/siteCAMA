@@ -18,7 +18,13 @@ model User {
     email                 String?                @unique
     emailVerified         DateTime?
     image                 String?
+    phone                 String? // Numéro de téléphone
+    designation           String? // Poste ou titre dans l'organisation
+    address               String? // Adresse physique
+    dateOfBirth           DateTime?
+    hiredAt               DateTime? // Date d'embauche
     password              String?
+    codeInfo              String?                @unique
     role                  UserRole               @default(USER)
     isActive              Boolean                @default(true)
     deactivatedAt         DateTime? // Date de désactivation

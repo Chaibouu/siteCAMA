@@ -45,11 +45,6 @@ export const createUserSchema = z.object({
   role: z.enum([
     "USER",
     "ADMIN",
-    "RH",
-    "FINANCE",
-    "DIRECTION",
-    "DIR_RH",
-    "DIR_FINANCE",
   ]),
   isActive: z.boolean().optional(),
   isDeleted: z.boolean().optional(),
@@ -84,11 +79,6 @@ export const updateUserSchema = z.object({
     .enum([
       "USER",
       "ADMIN",
-      "RH",
-      "FINANCE",
-      "DIRECTION",
-      "DIR_RH",
-      "DIR_FINANCE",
     ])
     .optional(),
   isActive: z.boolean().optional(),

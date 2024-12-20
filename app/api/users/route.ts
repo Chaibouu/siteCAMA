@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import { createUserSchema } from "@/schemas/user";
 import { generateSecurePassword } from "@/utils/password";
 import { sendGeneratedPasswordEmail } from "@/lib/mail";
+import { UserSchema } from "@/schemas/Forms";
 
 export async function GET(req: NextRequest) {
   const authError = await authorize(req, "/api/users");
@@ -24,8 +25,6 @@ export async function GET(req: NextRequest) {
         hiredAt: true,
         isActive: true,
         role: true,
-        codeInfo: true,
-        Grade: true,
       },
     });
 
@@ -49,7 +48,7 @@ export async function POST(req: NextRequest) {
       hiredAt: body.hiredAt ? new Date(body.hiredAt) : undefined,
     };
     // Validation des données avec Zod
-    const parsedData = createUserSchema.safeParse(parsedBody);
+    const parsedData = UserSchema.safeParse(parsedBody);
     if (!parsedData.success) {
       return new Response(
         JSON.stringify({
@@ -68,37 +67,34 @@ export async function POST(req: NextRequest) {
       designation,
       address,
       dateOfBirth,
-      hiredAt,
       image,
       role,
       isActive,
       isDeleted,
-      gradeId,
-      codeInfo,
     } = parsedData.data;
 
     // Vérification pour DIR_RH et DIR_FINANCE
-    if (["DIR_RH", "DIR_FINANCE"].includes(role)) {
-      const roleLabel =
-        role === "DIR_RH"
-          ? "Le Directeur des Ressources Humaines"
-          : "Le Directeur Financier et Comptable";
+    // if (["DGE", "DE"].includes(role)) {
+    //   const roleLabel =
+    //     role === "DIR_RH"
+    //       ? "Le Directeur Général des Etudes"
+    //       : "Le Directeur des Etudes";
 
-      const existingUser = await db.user.findFirst({
-        where: {
-          role,
-        },
-      });
+    //   const existingUser = await db.user.findFirst({
+    //     where: {
+    //       role,
+    //     },
+    //   });
 
-      if (existingUser) {
-        return NextResponse.json(
-          {
-            error: `${roleLabel} existe déjà. Un seul utilisateur peut être assigné à ce rôle.`,
-          },
-          { status: 400 }
-        );
-      }
-    }
+    //   if (existingUser) {
+    //     return NextResponse.json(
+    //       {
+    //         error: `${roleLabel} existe déjà. Un seul utilisateur peut être assigné à ce rôle.`,
+    //       },
+    //       { status: 400 }
+    //     );
+    //   }
+    // }
 
     // Générer un mot de passe sécurisé
     const plainPassword = generateSecurePassword();
@@ -113,14 +109,10 @@ export async function POST(req: NextRequest) {
         designation,
         address,
         dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
-        hiredAt: hiredAt ? new Date(hiredAt) : null,
-        image,
         password: hashedPassword,
         role,
         isActive,
         isDeleted,
-        gradeId,
-        codeInfo,
         emailVerified: new Date(),
       },
     });

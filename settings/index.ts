@@ -1,3 +1,5 @@
+import { db } from "@/lib/db";
+
 const appConfig = {
   appName: "CAMA",
   websiteTitle: "CAMA",
@@ -28,6 +30,51 @@ const appConfig = {
     maxAttempts: 15, // Nombre maximal de tentatives de connexion avant blocage
     backoffDelayFactor: 2, // Facteur de progression du backoff (multiplicateur)
   },
+};
+
+export interface AppConfig {
+  appName: string;
+  websiteTitle: string;
+  websiteDescription: string;
+  logoUrl: string;
+  sidebarClearlogoUrl: string;
+  adminSidebarColor: string;
+  primaryColor: string;
+  secondaryColor: string;
+  buttonColor: string;
+  fontFamily: string;
+  fontSize: string;
+  footerText: string;
+  vert: string;
+  orange: string;
+}
+
+export const loadAppConfig = async (): Promise<AppConfig> => {
+  // const settings = await db.setting.findMany();
+
+  // const settingsMap: Record<string, string> = settings.reduce<
+  //   Record<string, string>
+  // >((acc, setting) => {
+  //   acc[setting.key] = setting.value;
+  //   return acc;
+  // }, {});
+
+  return {
+    appName: "CAMA",
+    websiteTitle:  "CAMA",
+    websiteDescription: "CAMA",
+    logoUrl:  "/logoo.png",
+    sidebarClearlogoUrl: "/logoo.png",
+    adminSidebarColor:  "#1C2434",
+    primaryColor:  "#099058",
+    secondaryColor:  "#F06E2F",
+    buttonColor:  "#FF5722",
+    fontFamily:  "Inter, sans-serif",
+    fontSize:  "16px",
+    footerText:  "Powered by CAMA",
+    vert: "#099058",
+    orange: "#F06E2F",
+  };
 };
 
 export default appConfig;

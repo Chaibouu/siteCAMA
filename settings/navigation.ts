@@ -53,6 +53,12 @@ export const adminNavigation: NavigationItem[] = [
     path: "/categori",
     allowedRoles: ["ADMIN", "USER"],
   },
+  {
+    title: "Utilisateur",
+    icon: "mage:users",
+    path: "/utilisateur",
+    allowedRoles: ["ADMIN", "USER"],
+  },
   // {
   //   title: "Dashboard",
   //   icon: "material-symbols-light:dashboard-outline",
@@ -63,12 +69,6 @@ export const adminNavigation: NavigationItem[] = [
   //   title: "Soutenance",
   //   icon: "ph:certificate-light",
   //   path: "/soutenance",
-  //   allowedRoles: ["ADMIN", "USER"],
-  // },
-  // {
-  //   title: "Utilisateur",
-  //   icon: "mage:users",
-  //   path: "/utilisateur",
   //   allowedRoles: ["ADMIN", "USER"],
   // },
   // {

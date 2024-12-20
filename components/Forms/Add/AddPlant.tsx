@@ -43,7 +43,6 @@ const AddPlant = ({ onClose, categoriplants }:AddPlantProps) => {
     queryFn: CategoriPlant,
     initialData: categoriplants,
     });
-    console.log(datacategoriplants);
     
 
     const mutation = useMutation({

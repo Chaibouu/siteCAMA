@@ -23,7 +23,6 @@ export async function GET(req: NextRequest) {
         hiredAt: true,
         isActive: true,
         role: true,
-        Grade: true,
         codeInfo: true,
       },
     });
@@ -59,28 +58,28 @@ export async function PUT(req: NextRequest) {
     const parsedData = updateUserSchema.parse(body);
     const role = parsedData?.role;
     // Vérification pour DIR_RH et DIR_FINANCE
-    if (role && ["DIR_RH", "DIR_FINANCE"].includes(role)) {
-      const roleLabel =
-        role === "DIR_RH"
-          ? "Le Directeur des Ressources Humaines"
-          : "Le Directeur Financier et Comptable";
+    // if (role && ["DIR_RH", "DIR_FINANCE"].includes(role)) {
+    //   const roleLabel =
+    //     role === "DIR_RH"
+    //       ? "Le Directeur des Ressources Humaines"
+    //       : "Le Directeur Financier et Comptable";
 
-      const existingUser = await db.user.findFirst({
-        where: {
-          role,
-          NOT: { id },
-        },
-      });
+    //   const existingUser = await db.user.findFirst({
+    //     where: {
+    //       role,
+    //       NOT: { id },
+    //     },
+    //   });
 
-      if (existingUser) {
-        return NextResponse.json(
-          {
-            error: `${roleLabel} existe déjà. Un seul utilisateur peut être assigné à ce rôle.`,
-          },
-          { status: 400 }
-        );
-      }
-    }
+    //   if (existingUser) {
+    //     return NextResponse.json(
+    //       {
+    //         error: `${roleLabel} existe déjà. Un seul utilisateur peut être assigné à ce rôle.`,
+    //       },
+    //       { status: 400 }
+    //     );
+    //   }
+    // }
 
     // Mettre à jour l'utilisateur
     const updatedUser = await db.user.update({
