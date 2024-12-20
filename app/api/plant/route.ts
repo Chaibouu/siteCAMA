@@ -5,11 +5,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 
-export const config = {
-  api: {
-    bodyParser: false, // Désactiver le body parser par défaut
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false, // Désactiver le body parser par défaut
+//   },
+// };
 
 export async function GET(req: NextRequest) {
   const authError = await authorize(req, "/api/plant");
