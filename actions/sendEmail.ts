@@ -1,8 +1,6 @@
 "use server";
-
 import * as z from "zod";
 import bcrypt from "bcryptjs";
-
 import { db } from "@/lib/db";
 import { SendEmailSchema } from "@/schemas";
 import { getUserByEmail } from "@/data/user";
@@ -15,12 +13,8 @@ export const sendEmail = async (values: z.infer<typeof SendEmailSchema>) => {
   if (!validatedFields.success) {
     return { error: "Invalid fields!" };
   }
-
   const { nom, prenom, email, message } = validatedFields.data;
  
-
-
-
 
   return { success: "Email envoyer avec succès!" };
 };
