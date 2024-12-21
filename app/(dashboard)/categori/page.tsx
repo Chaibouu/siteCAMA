@@ -3,6 +3,8 @@ import ButtonAddCategoriPlant from '@/components/Buttons/ButtonAddCategoriPlant'
 import TableCategoriPlant from '@/components/Tables/Table/TableCategoriPlant'
 import React from 'react'
 
+export const dynamic = "force-dynamic";
+
 const page = async () => {
     const categoriplant = await fetchCategoriPlant()
     return (

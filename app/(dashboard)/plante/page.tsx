@@ -3,6 +3,9 @@ import ButtonAddPlant from '@/components/Buttons/ButtonAddPlant'
 import TablePlant from '@/components/Tables/Table/TablePlant'
 import React from 'react'
 
+export const dynamic = "force-dynamic";
+
+
 const page = async () => {
     const plant = await fetchPlant()
     return (
