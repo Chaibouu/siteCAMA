@@ -107,3 +107,19 @@ export const ResetPasswordSchema = z.object({
       message: "Le mot de passe doit comporter au moins 8 caractères",
     }),
 });
+
+export const SendEmailSchema = z.object({
+  nom: z.string().min(1,{
+    message: "Veuillez entrer un Nom",
+  }),
+  prenom: z.string().min(1,{
+    message: "Veuillez entrer un prénom",
+  }),
+  email: z.string().email({
+    message: "Veuillez entrer votre Email",
+  }),
+  message: z.string().min(1,{
+    message: "Veuillez entrer votre Message",
+  }),
+  
+});
