@@ -9,6 +9,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { Links } from "@/settings/navigation";
 import Boutique from "@/components/main/Boutique";
+import About from "@/components/main/About";
+import Contact from "@/components/main/Contact";
+import Footer from "@/components/main/Footer";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -20,6 +23,10 @@ export default function Home() {
     <main>
       <Navbar Links={Links}/>
       {/* <main className="flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-green-800"></main> */}
+      <div className="my-8"><About/></div>
+      <div className="my-8"><Boutique/></div>
+      <div className="my-8"><Contact/></div>
+      <Footer/>
     </main>
   )
 }
