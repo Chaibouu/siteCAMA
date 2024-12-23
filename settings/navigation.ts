@@ -6,23 +6,27 @@ export interface LinkItem {
 export const Links : LinkItem[] = [
   {
     name:"Accueil",
-    link:"/"
+    link:"#header"
   },
   {
     name:"Service",
-    link:"/service"
+    link:"#service"
   },
   {
     name:"Boutique",
-    link:"/boutique"
+    link:"#boutique"
   },
   {
-    name:"A propos",
-    link:"/propos"
+    name:"Portfolio/Réalisations",
+    link:"#portfolio"
+  },
+  {
+    name:"À propos",
+    link:"#propos"
   },
   {
     name:"Contact",
-    link:"/contact"
+    link:"#contact"
   },
 
 ]

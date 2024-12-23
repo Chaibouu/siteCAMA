@@ -16,7 +16,7 @@ const About = () => {
               repellendus vero, harum quos cupiditate, sapiente eius doloribus 
               maxime quae amet <br /> praesentium perspiciatis odio. Saepe, dolor inve <br />
               ntore. Accusantium eius quisquam omnis cupiditate incidunt recusandae.
-            </p>
+            </p> 
           </div>
           <div>
               <Image src="/img1.jpg" alt="a propos de l'ESSI " height={400} width={400}/>
