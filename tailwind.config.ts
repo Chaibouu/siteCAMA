@@ -22,7 +22,7 @@ const config = {
     },
     extend: {
       colors: {
-        PrimaryCol : Configs.PrimaryColor,
+        PrimaryCol : Configs.VertClair,
         SecondaryCol : Configs.SecondariColor,
         TertiaryCol : Configs.BleuFonce,
         BrunFonce : Configs.BrunFonce,

@@ -38,7 +38,7 @@ const Services = () => {
           </div>
 
           {/* Description masquée au départ */}
-          <div className="absolute inset-0 flex items-center justify-center p-4 text-white bg-green-500 translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+          <div className="absolute inset-0 flex items-center justify-center p-4 text-white bg-BrunFonce translate-y-full transition-transform duration-500 group-hover:translate-y-0">
             <p className="text-sm">{service.description}</p>
           </div>
         </div>

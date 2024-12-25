@@ -48,7 +48,7 @@ export default function HomePage() {
         <button
           onClick={() => setFilter("")}
           className={`px-4 py-2 rounded text-white ${
-            filter === "" ? "bg-blue-500" : "bg-gray-300 hover:bg-gray-400"
+            filter === "" ? "bg-PrimaryCol" : "bg-gray-300 hover:bg-PrimaryCol"
           }`}
         >
           Tous
@@ -58,7 +58,7 @@ export default function HomePage() {
             key={category}
             onClick={() => setFilter(category)}
             className={`px-4 py-2 rounded text-white ${
-              filter === category ? "bg-blue-500" : "bg-gray-300 hover:bg-gray-400"
+              filter === category ? "bg-PrimaryCol" : "bg-gray-300 hover:bg-PrimaryCol"
             }`}
           >
             {category}
