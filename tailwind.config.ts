@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss"
 import appConfig from "./settings";
+import Configs from "./configs/Configs";
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const config = {
@@ -21,6 +22,10 @@ const config = {
     },
     extend: {
       colors: {
+        PrimaryCol : Configs.PrimaryColor,
+        SecondaryCol : Configs.SecondariColor,
+        TertiaryCol : Configs.BleuFonce,
+        BrunFonce : Configs.BrunFonce,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

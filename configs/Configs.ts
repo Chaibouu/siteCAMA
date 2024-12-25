@@ -53,7 +53,17 @@ const Configs ={
     description: 'primary-1',
     PrimaryColor: '#33A752',
     SecondariColor: '#DF7413',
-    btnColor: '#675DD8'
+    btnColor   :' #675DD8',
+    VertClair  :' #A8D5BA',
+    VertFonce  :' #2F4F4F',
+    
+    BeigeSable :' #D2B48C',
+    BrunMoyen  :' #8B4513',
+    BrunFonce  :' #5D4037',
+
+    BleuPastel :' #ADD8E6',
+    BleuClair  :' #87CEEB',
+    BleuFonce  :' #4682B4',
   }
 
 export default Configs

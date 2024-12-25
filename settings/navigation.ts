@@ -17,7 +17,7 @@ export const Links : LinkItem[] = [
     link:"#boutique"
   },
   {
-    name:"Portfolio/Réalisations",
+    name:"Réalisations",
     link:"#portfolio"
   },
   {

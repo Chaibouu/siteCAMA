@@ -54,7 +54,7 @@ const Navbar = ({Links}:NavbarProps) => {
   
   return (
     
-    <div className={fix ? `w-full fixed top-0 left-0 z-20 bg-[#F5F5F5] border-b-2 border--[#F5F5F5] mb-4 dark:bg-[#2C2C2C]` : `w-full fixed top-0 left-0 z-20 mb-4 dark:bg-slate-500`}>
+    <div className={fix ? `w-full fixed top-0 left-0 z-20 bg-PrimaryCol border-b-2 border--[#F5F5F5] mb-4 dark:bg-[#2C2C2C]` : `w-full bg-PrimaryCol fixed top-0 left-0 z-20 mb-4 dark:bg-slate-500`}>
       <div className="flex items-center justify-between m-2">
       
           <div className="md:ms-12">

@@ -62,7 +62,7 @@ export const loadAppConfig = async (): Promise<AppConfig> => {
   return {
     appName: "CAMA",
     websiteTitle:  "CAMA",
-    websiteDescription: "CAMA",
+    websiteDescription: "Compagnie Africaine pour la modernisation de l'agriculture",
     logoUrl:  "/logoo.png",
     sidebarClearlogoUrl: "/logoo.png",
     adminSidebarColor:  "#1C2434",

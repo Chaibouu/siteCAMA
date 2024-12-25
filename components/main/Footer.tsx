@@ -20,12 +20,12 @@ const Footer = () => {
 
     return (
         <>
-            <div className=" bg-Es_primary pt-1">
+            <div className=" bg-BrunFonce pt-1">
                 <div  className="flex items-center justify-around">
                     <div>
                         <Image
-                            alt="Ecole supérieur de Statistique et Informatique"
-                            src={"/FooterLogo.png"}
+                            alt="Compagnie Africaine pour la modernisation de l'agriculture"
+                            src={"/logoo.png"}
                             width={200}
                             height={200}
                         />
@@ -33,19 +33,19 @@ const Footer = () => {
                     <div className={`flex flex-col space-y-2`}>
                         <div className={`flex items-center`}>
                             <Icon icon="mdi:telephone"  className={`me-4 text-white text-xl`}/> 
-                            <span className='text-white'>+227 886474747</span>
+                            <span className='text-white'>+227 92 03 02 86</span>
                         </div>
                         <div className={`flex items-center`}>
                             <Icon icon="mdi:email-multiple" className={`me-4 text-white text-xl`}/>
-                            <span className='text-white'>essi.niger@gmail.com</span>
+                            <span className='text-white'>cama.niger@gmail.com</span>
                         </div>
                         <div className={`flex items-center`}>
                             <Icon icon="gis:position-man" className={`me-4 text-white text-xl`}/> 
-                            <span className='text-white'>Quartier Jangorzo</span>
+                            <span className='text-white'>Quartier Saguia</span>
                         </div>
                         <div className={`flex items-center`}>
                             <Icon icon="zondicons:globe" className={`me-4 text-white text-xl`}/> 
-                            <span className='text-white'>http://www.essi.ne</span>
+                            <span className='text-white'>http://www.cama.ne</span>
                         </div>
                         
                     </div>
@@ -91,8 +91,8 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className=' w-full text-center text-white text-[12px]'>
-                    <p>Copyright  © 2024-Essi . Tous droits réservés.</p>
+                <div className=' w-full text-center text-white text-[12px] my-4'>
+                    <p>Copyright  © 2024-CAMA . Tous droits réservés.</p>
                 </div>
             </div>
         </>

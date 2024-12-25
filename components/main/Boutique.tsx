@@ -67,21 +67,23 @@ export default function HomePage() {
       </div>
 
       {/* Grille des cartes filtrées */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item, index) => (
-            <Cards
-              key={index}
-              imageSrc={item.imageSrc}
-              name={item.name}
-              price={item.price}
-              rating={item.rating}
-            />
-          ))
-        ) : (
-          <p className="col-span-3 text-center text-gray-500">Aucun résultat trouvé.</p>
-        )}
-      </div>
+        <div className="w-full flex items-center justify-center mt-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-14 gap-y-18 max-w-[1100px]">
+            {filteredItems.length > 0 ? (
+              filteredItems.map((item, index) => (
+                <Cards
+                  key={index}
+                  imageSrc={item.imageSrc}
+                  name={item.name}
+                  price={item.price}
+                  rating={item.rating}
+                />
+              ))
+            ) : (
+              <p className="col-span-3 text-center text-gray-500">Aucun résultat trouvé.</p>
+            )}
+          </div>
+        </div>
     </div>
   );
 }
