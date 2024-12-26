@@ -10,11 +10,11 @@ import Navbar from "@/components/Navbar";
 import { Links } from "@/settings/navigation";
 import Boutique from "@/components/main/Boutique";
 import About from "@/components/main/About";
-import Contact from "@/components/main/Contact";
 import Footer from "@/components/main/Footer";
 import Slider from "@/components/main/Slider";
 import { images } from "@/configs/Configs";
 import Services from "@/components/main/Service";
+import Contact from "@/components/main/Contact";
 
 const font = Poppins({
   subsets: ["latin"],

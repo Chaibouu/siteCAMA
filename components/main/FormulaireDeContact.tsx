@@ -136,7 +136,7 @@ function FormulaireDeContact() {
 
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button disabled={isPending} type="submit" className="w-full bg-Es_primary py-2 px-4 rounded-lg text-white">
+          <Button disabled={isPending} type="submit" className="w-full bg-PrimaryCol py-2 mx-8 rounded-lg text-white hover:bg-BrunFonce">
             Envoyer
           </Button>
         </form>
