@@ -16,7 +16,7 @@ type Realisation = {
   mediaType: "image" | "video";
 };
 
-const RealisationsSection: React.FC<{ realisations: Realisation[] }> = ({ realisations }) => {
+const Realisations: React.FC<{ realisations: Realisation[] }> = ({ realisations }) => {
   const [selectedRealisation, setSelectedRealisation] = useState<Realisation | null>(null);
 
   const handleOpenModal = (realisation: Realisation) => {
@@ -27,13 +27,11 @@ const RealisationsSection: React.FC<{ realisations: Realisation[] }> = ({ realis
     setSelectedRealisation(null);
   };
 
-  // Limiter l'affichage à 3 réalisations
-  const limitedRealisations = realisations.slice(0, 3);
 
   return (
     <section className="py-10">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-SecondaryCol mb-6 dark:text-PrimaryCol">Nos Réalisations</h2>
+        <h2 className="text-4xl font-bold text-start text-SecondaryCol mb-6 dark:text-PrimaryCol">Nos Réalisations</h2>
 
         <div className="max-w-[1100px] mx-auto">
             {/* Animation de la liste */}
@@ -45,7 +43,7 @@ const RealisationsSection: React.FC<{ realisations: Realisation[] }> = ({ realis
                 visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } },
             }}
             >
-            {limitedRealisations.map((realisation) => (
+            {realisations.map((realisation) => (
                 <motion.div
                 key={realisation.id}
                 className="flex flex-col lg:flex-row items-center bg-white shadow-md rounded-md overflow-hidden border border-gray-100 dark:bg-DarkCol dark:border-slate-600"
@@ -92,32 +90,19 @@ const RealisationsSection: React.FC<{ realisations: Realisation[] }> = ({ realis
                 </motion.div>
             ))}
             </motion.div>
-
-            {/* Bouton Voir Plus */}
-            {realisations.length > 3 && (
-            <div className="text-center mt-8">
-                <Link href="/realisations" className="flex items-center justify-center w-full">
-                    <button className="mt-4 w-[50px] h-50px] rounded-full flex flex-col items-center justify-center bg-PrimaryCol text-white hover:opacity-50 dark:bg-PrimaryCol">
-                        {/* <span className="text-[14px]">Voir plus</span> */}
-                        <ChevronDown size={46} />
-                    </button>
-                </Link>
-
-            </div>
-            )}
         </div>
 
         {/* Modal avec animation */}
         <AnimatePresence>
             {selectedRealisation && (
             <motion.div
-                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 "
+                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
             >
                 <motion.div
-                className="bg-white w-11/12 max-w-3xl rounded-md border overflow-hidden dark:bg-DarkCol dark:border-slate-600"
+                className="bg-white w-11/12 max-w-3xl rounded-md overflow-hidden border dark:bg-DarkCol dark:border-slate-600"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
@@ -163,4 +148,4 @@ const RealisationsSection: React.FC<{ realisations: Realisation[] }> = ({ realis
   );
 };
 
-export default RealisationsSection;
+export default Realisations;

@@ -23,9 +23,10 @@ const config = {
     extend: {
       colors: {
         PrimaryCol : Configs.VertClair,
-        SecondaryCol : Configs.SecondariColor,
+        SecondaryCol : Configs.BrunFonce,
         TertiaryCol : Configs.BleuFonce,
         BrunFonce : Configs.BrunFonce,
+        DarkCol : Configs.DarkCol,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

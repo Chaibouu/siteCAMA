@@ -16,7 +16,7 @@ const appConfig = {
       pass: process.env.MAIL_AUTH_PASSWORD,
     },
   },
-  publicRoutes: ["/"],
+  publicRoutes: ["/","/realisations"],
   defaultLoginRedirect: "/dashboard",
 
   // Ajout d'une option pour autoriser ou non les connexions multiples

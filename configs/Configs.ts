@@ -70,6 +70,7 @@ type Realisation = {
   subtitle: string;
   description: string;
   date: string;
+  lieu: string;
   media: string; // URL d'une image ou vidéo
   mediaType: "image" | "video";
 };
@@ -82,6 +83,7 @@ export const realisations: Realisation[] = [
     description:
       "Ce projet consiste à suivre un champ de maïs de 10 hectares dans la région nord. Nous avons assuré un suivi minutieux pour maximiser le rendement.",
     date: "2024-12-20",
+    lieu: "Niamey",
     media: "/champ.jpg",
     mediaType: "image",
   },
@@ -92,11 +94,105 @@ export const realisations: Realisation[] = [
     description:
       "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
     date: "2024-10-15",
+    lieu: "Youri",
+    media: "/image1.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 3,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Kollo",
+    media: "/image2.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 4,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Balleyara",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 4,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Balleyara",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 4,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Balleyara",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 4,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Balleyara",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 4,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    lieu: "Balleyara",
     media: "/champ.jpg",
     mediaType: "image",
   },
   // Ajoutez d'autres réalisations ici
 ];
+
+export const partenaires = [
+  {
+    id: 1,
+    name: "C.A.M.A",
+    logo: "/logoo.png",
+    description: "Partenaire engagé dans la promotion des solutions durables.",
+  },
+  {
+    id: 2,
+    name: "AfricaYcone",
+    logo: "/logoo.png",
+    description: "Acteur clé dans le domaine agricole.",
+  },
+  {
+    id: 3,
+    name: "Partenaire C",
+    logo: "/logoo.png",
+    description: "Leader en innovation technologique pour les cultures.",
+  },
+  {
+    id: 4,
+    name: "Partenaire D",
+    logo: "/logoo.png",
+  },
+];
+
 
 
 // Primary color config object
@@ -117,6 +213,8 @@ const Configs ={
     BleuPastel :' #ADD8E6',
     BleuClair  :' #87CEEB',
     BleuFonce  :' #4682B4',
+
+    DarkCol    : ' #001F3F'
   }
 
 export default Configs

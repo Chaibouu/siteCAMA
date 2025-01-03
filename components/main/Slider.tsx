@@ -89,7 +89,7 @@ export default function Slider({images} : SliderProps) {
                 <ChevronRight className="w-8 h-8"/>
             </button>
       </div>
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-[80]">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-[19]">
             {images.map((_, index)=>(
                 <button key={index} onClick={()=>{
                     setDirection(index > currentIndex ? 1 : -1)

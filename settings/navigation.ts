@@ -6,7 +6,7 @@ export interface LinkItem {
 export const Links : LinkItem[] = [
   {
     name:"Accueil",
-    link:"#header"
+    link:"#accueil"
   },
   {
     name:"À propos",
@@ -22,11 +22,37 @@ export const Links : LinkItem[] = [
   },
   {
     name:"Réalisations",
-    link:"#portfolio"
+    link:"#realisation"
   },
   {
     name:"Contact",
     link:"#contact"
+  },
+]
+export const Linkss : LinkItem[] = [
+  {
+    name:"Accueil",
+    link:"/#accueil"
+  },
+  {
+    name:"À propos",
+    link:"/#propos"
+  },
+  {
+    name:"Service",
+    link:"/#service"
+  },
+  {
+    name:"Boutique",
+    link:"/#boutique"
+  },
+  {
+    name:"Réalisations",
+    link:"/#realisation"
+  },
+  {
+    name:"Contact",
+    link:"/#contact"
   },
 ]
 
