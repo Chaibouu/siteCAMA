@@ -38,13 +38,13 @@ const Services = () => {
   return (
     <div className="max-w-[1100px] mx-auto">
       <div>
-        <h2 className="text-SecondaryCol text-4xl font-bold text-center mb-6">Services</h2>
+        <h2 className="text-SecondaryCol text-4xl font-bold text-center mb-6 dark:text-PrimaryCol">Services</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {services.map((service, index) => (
           <div
             key={index}
-            className="relative w-82 h-48 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden group"
+            className="relative w-82 h-48 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden group dark:bg-DarkCol dark:border-slate-600"
           >
             {/* Icône et titre visibles par défaut */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center transition-transform duration-500 group-hover:-translate-y-full">
@@ -58,7 +58,7 @@ const Services = () => {
                     className="w-26 h-26"
                 />
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-800">{service.title}</h3>
+              <h3 className="mt-4 text-lg font-semibold text-gray-800 dark:text-PrimaryCol">{service.title}</h3>
             </div>
 
             {/* Description masquée au départ */}
