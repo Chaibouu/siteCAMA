@@ -9,6 +9,10 @@ export const Links : LinkItem[] = [
     link:"#header"
   },
   {
+    name:"À propos",
+    link:"#propos"
+  },
+  {
     name:"Service",
     link:"#service"
   },
@@ -21,14 +25,9 @@ export const Links : LinkItem[] = [
     link:"#portfolio"
   },
   {
-    name:"À propos",
-    link:"#propos"
-  },
-  {
     name:"Contact",
     link:"#contact"
   },
-
 ]
 
 export interface ChildrenItem {

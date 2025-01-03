@@ -22,7 +22,7 @@ const services = [
     icon: "🌱",
   },
   {
-    title: "Vente de plantes et graines",
+    title: "Vente de Pépinières et Semences Certifié",
     description: "Découvrez notre sélection de plantes, graines et produits d'entretien de qualité.",
     icon: "🌻",
   },
@@ -36,6 +36,9 @@ const services = [
 const Services = () => {
   return (
     <div className="max-w-[1200px] mx-auto">
+      <div>
+        <h2 className="text-Es_primary text-4xl font-bold text-center mb-14">Services</h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-gray-100">
         {services.map((service, index) => (
           <div

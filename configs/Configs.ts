@@ -9,7 +9,7 @@ export type ColorConfig = {
 
 export const images = [
   {
-    url:"/slider/1.jpg",
+    url:"/slider/citronier.png",
     alt:"description de l'image",
     title:"Optimisez vos récoltes, embellissez vos espaces verts.",
     subtitle:"Une expérience unique au coeur de notre savoir-faire",
@@ -44,7 +44,60 @@ export const images = [
     title:"Découvrer notre Univers",
     subtitle:"Une expérience unique au coeur de notre savoir-faire",
   },
+  {
+    url:"/slider/7.jpg",
+    alt:"description de l'image",
+    title:"Découvrer notre Univers",
+    subtitle:"Une expérience unique au coeur de notre savoir-faire",
+  },
+  {
+    url:"/slider/8.jpg",
+    alt:"description de l'image",
+    title:"Découvrer notre Univers",
+    subtitle:"Une expérience unique au coeur de notre savoir-faire",
+  },
+  {
+    url:"/slider/9.jpg",
+    alt:"description de l'image",
+    title:"Découvrer notre Univers",
+    subtitle:"Une expérience unique au coeur de notre savoir-faire",
+  },
 ]
+
+type Realisation = {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  date: string;
+  media: string; // URL d'une image ou vidéo
+  mediaType: "image" | "video";
+};
+
+export const realisations: Realisation[] = [
+  {
+    id: 1,
+    title: "Champ de maïs - Région Nord",
+    subtitle: "Suivi intensif pour un rendement exceptionnel",
+    description:
+      "Ce projet consiste à suivre un champ de maïs de 10 hectares dans la région nord. Nous avons assuré un suivi minutieux pour maximiser le rendement.",
+    date: "2024-12-20",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  {
+    id: 2,
+    title: "Projet de blé - Région Sud",
+    subtitle: "Un partenariat fructueux",
+    description:
+      "Optimisation de la production de blé grâce à nos semences certifiées et un accompagnement technique.",
+    date: "2024-10-15",
+    media: "/champ.jpg",
+    mediaType: "image",
+  },
+  // Ajoutez d'autres réalisations ici
+];
+
 
 // Primary color config object
 const Configs ={

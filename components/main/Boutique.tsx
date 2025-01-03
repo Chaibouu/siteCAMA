@@ -32,6 +32,9 @@ export default function HomePage() {
 
   return (
     <div className="p-8">
+      <div>
+        <h2 className="text-Es_primary text-4xl font-bold text-center mb-14">Boutique</h2>
+      </div>
       {/* Barre de recherche */}
       <div className="flex justify-center mb-6">
         <input

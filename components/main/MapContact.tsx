@@ -31,7 +31,7 @@ const MapContact = () => {
           allowFullScreen={true}
           loading="lazy" 
           referrerPolicy="no-referrer-when-downgrade"
-          title="Google Maps location of NINETEC SARL"
+          title="Google Maps location of CAMA"
         ></iframe>
     </div>
   )
