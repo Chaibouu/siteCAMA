@@ -24,20 +24,17 @@ export default async function RootLayout({
   const {user} = await getUser();
   return (
     <>
-      <Head>
-        {/* Titre pour le référencement */}
+      {/* <Head>
         <title>Accueil | Mon Site Web - Vente de Semences & Suivi des Champs</title>
         <meta
           name="description"
           content="Découvrez notre boutique de semences, nos services de suivi des champs, et nos réalisations. Contactez-nous pour un accompagnement sur mesure."
         />
 
-        {/* Métadonnées pour les moteurs de recherche */}
         <meta name="keywords" content="semences, plantes, jardin, jardinier, suivi des champs, agriculture, boutique en ligne, services agricoles, partenaires, réalisations" />
         <meta name="author" content="CAMA, C.A.M.A, Compagnie Africaine pour la modernisation de l'agriculture" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Open Graph pour les réseaux sociaux */}
         <meta property="og:title" content="Accueil | Mon Site Web - Vente de Semences & Suivi des Champs" />
         <meta
           property="og:description"
@@ -47,7 +44,6 @@ export default async function RootLayout({
         <meta property="og:url" content="https://CAMA.com" />
         <meta property="og:type" content="website" />
 
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Accueil | Mon Site Web - Vente de Semences & Suivi des Champs" />
         <meta
@@ -56,9 +52,8 @@ export default async function RootLayout({
         />
         <meta name="twitter:image" content="/logoo.png" />
 
-        {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       <SessionProvider user={user?.user}>
         <html lang="en">
           <ReactQueryProvider>
