@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 // export async function POST(req: NextRequest) {
 //   try {
-//     const { plantId, value, userId } = await req.json();
+//     const { produitId, value, userId } = await req.json();
 
 //     // Validation des entrées
-//     if (!plantId || !value) {
+//     if (!produitId || !value) {
 //       return NextResponse.json({ error: "Plante et note requises" }, { status: 400 });
 //     }
 //     if (value < 1 || value > 5) {
@@ -17,18 +17,18 @@ import { NextRequest, NextResponse } from "next/server";
 //     await db.rating.create({
 //       data: {
 //         value,
-//         plantId,
+//         produitId,
 //         userId,
 //       },
 //     });
 
 //     // Recalculer la note moyenne
-//     const ratings = await db.rating.findMany({ where: { plantId } });
+//     const ratings = await db.rating.findMany({ where: { produitId } });
 //     const avgRating = ratings.reduce((sum, rating) => sum + rating.value, 0) / ratings.length;
 
 //     // Mettre à jour la note moyenne de la plante
 //     await db.plant.update({
-//       where: { id: plantId },
+//       where: { id: produitId },
 //       data: { rating: avgRating },
 //     });
 
@@ -40,10 +40,10 @@ import { NextRequest, NextResponse } from "next/server";
 // }
 export async function POST(req: NextRequest) {
     try {
-      const { plantId, value, userId } = await req.json();
+      const { produitId, value, userId } = await req.json();
   
       // Validation des entrées
-      if (!plantId || !value) {
+      if (!produitId || !value) {
         return NextResponse.json({ error: "Plante et note requises" }, { status: 400 });
       }
   
@@ -55,18 +55,18 @@ export async function POST(req: NextRequest) {
       await db.rating.create({
         data: {
           value,
-          plantId,
+          produitId,
           userId,
         },
       });
   
       // Recalcul de la moyenne des notes
-      const ratings = await db.rating.findMany({ where: { plantId } });
+      const ratings = await db.rating.findMany({ where: { produitId } });
       const avgRating = ratings.reduce((sum, rating) => sum + rating.value, 0) / ratings.length;
   
       // Mise à jour de la moyenne des notes pour la plante
-      await db.plant.update({
-        where: { id: plantId },
+      await db.produit.update({
+        where: { id: produitId },
         data: { rating: avgRating },
       });
   

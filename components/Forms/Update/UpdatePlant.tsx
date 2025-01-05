@@ -12,13 +12,13 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Select from 'react-select';
 import { PlantSchema } from '@/schemas/Forms';
 import { fetchCategoriPlant } from '@/actions/CategoriPlant';
-import { postPlant } from '@/actions/Plant';
+import { putProduit } from '@/actions/produit';
 
 interface categoriplant {
     id: string;
     name: string;
 }
-interface plant {
+interface produit {
     id: string;
     name: string;
     price: string,
@@ -27,12 +27,12 @@ interface plant {
 }
 
 interface updateProps {
-    plant : plant;
+    produit : produit;
     // onClose: () => void; // Fonction pour fermer le dialog
     categoriplants?:categoriplant[],
 }
 
-const UpdatePlant = ({plant, categoriplants}:updateProps) => {
+const UpdatePlant = ({produit, categoriplants}:updateProps) => {
     const [isPending, setIsPending] = useState(false);
     const [isClearable, setIsClearable] = useState(true);
     const [isSearchable, setIsSearchable] = useState(true);
@@ -49,11 +49,11 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
     queryFn: CategoriPlant,
     initialData: categoriplants,
     });
-    console.log(plant?.imageUrl);
+    console.log(produit?.imageUrl);
     
     
     const mutation = useMutation({
-        mutationFn: postPlant,
+        mutationFn: putProduit,
         onSuccess: (data) => {
         if (data.message) {
             queryClient.invalidateQueries({ queryKey: ['produits'] });
@@ -87,10 +87,10 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
     });
 
     const defaultValue = {
-        name: plant.name || '',
-        price: plant.price || '',
-        categoryId: plant?.category?.name || '',
-        imageUrl: plant?.imageUrl || undefined, // Transforme une URL en fichier
+        name: produit.name || '',
+        price: produit.price || '',
+        categoryId: produit?.category?.name || '',
+        imageUrl: produit?.imageUrl || undefined, // Transforme une URL en fichier
     };
 
     const form = useForm<z.infer<typeof PlantSchema>>({

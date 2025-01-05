@@ -9,10 +9,11 @@ import { Input } from '../../ui/input';
 import { Button } from '../../ui/button';
 import Configs from '@/configs/Configs';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { postPlant } from '@/actions/Plant';
+// import { postPlant } from '@/actions/Plant';
 import { PlantSchema } from '@/schemas/Forms';
 import { fetchCategoriPlant } from '@/actions/CategoriPlant';
 import Select from 'react-select';
+import { postProduit } from '@/actions/produit';
 
 interface categoriplant {
     id: string;
@@ -46,7 +47,7 @@ const AddPlant = ({ onClose, categoriplants }:AddPlantProps) => {
     
 
     const mutation = useMutation({
-        mutationFn: postPlant,
+        mutationFn: postProduit,
         onSuccess: (data) => {
         if (data.message) {
             queryClient.invalidateQueries({ queryKey: ['produits'] });

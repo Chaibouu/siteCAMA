@@ -5,17 +5,16 @@ import React from "react";
 import { DataTable } from "../DataTables/data-table";
 import Delete from "../Delete/Delete";
 import Update from "../Update/Update";
-import { deletePlant, fetchPlant } from "@/actions/Plant";
 import Image from "next/image";
 import UpdatePlant from "@/components/Forms/Update/UpdatePlant";
-// import UpdatePlant from "@/components/Forms/Update/UpdatePlant";
-// import { deletePlant, fetchPlant } from "@/actions/plants";
+import { deleteProduit, fetchProduit } from "@/actions/produit";
+
 
 interface categoriplant {
   id: string;
   name: string;
 }
-interface plant {
+interface produit {
   id: string;
   name: string;
   price: string,
@@ -26,27 +25,27 @@ interface plant {
 interface TableProps {
   title: string,
   subTitle: string,
-  plants?:plant[],
+  plants?:produit[],
 }
 
 
 const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
  
-  const Plant = async () => {
-    let res = await fetchPlant()
-    return res.plant
+  const Produit = async () => {
+    let res = await fetchProduit()
+    return res.produit
   }
 
   const { data } = useQuery({
     queryKey: ["produits"],
-    queryFn: Plant,
+    queryFn: Produit,
     initialData: plants,
   });
   console.log(data);
   
   
 
-   const columns: ColumnDef<plant>[] = [
+   const columns: ColumnDef<produit>[] = [
     {
       accessorKey: "name",
       header: "Produit",
@@ -97,8 +96,8 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
       cell: ({ row }) => {
         return (
          <div className="flex gap-4">
-          <Update><UpdatePlant plant={row.original}/></Update>
-          <Delete id={row.original.id} title="produits" deleteFnct={deletePlant}/>
+          <Update><UpdatePlant produit={row.original}/></Update>
+          <Delete id={row.original.id} title="produits" deleteFnct={deleteProduit}/>
          </div>
         )
       },
@@ -116,7 +115,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
           <p className="text-muted-foreground text-nt__primary">{subTitle}</p>
         </div>
       </div>
-      <DataTable<plant>
+      <DataTable<produit>
         data={data}
         columns={columns}
         queryKey="produits"
