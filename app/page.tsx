@@ -1,4 +1,3 @@
-"use server"
 
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
