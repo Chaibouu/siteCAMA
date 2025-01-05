@@ -1,12 +1,6 @@
 "use server"
-import { Poppins } from "next/font/google";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { LoginButton } from "@/components/auth/login-button";
-import appConfig from "@/settings";
-import Image from "next/image";
-import Link from "next/link";
+import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { Links } from "@/settings/navigation";
 import Boutique from "@/components/main/Boutique";
@@ -18,7 +12,6 @@ import Services from "@/components/main/Service";
 import Contact from "@/components/main/Contact";
 import RealisationsSection from "@/components/main/Realisation";
 import PartenairesSection from "@/components/main/Partenaires";
-import Head from "next/head"; // Import pour les métadonnées
 
 const font = Poppins({
   subsets: ["latin"],
