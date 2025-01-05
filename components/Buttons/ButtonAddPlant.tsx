@@ -23,7 +23,7 @@ export default function ButtonAddPlant() {
                 style={{backgroundColor: Configs.SecondariColor}}
                 onClick={() => setIsOpen(true)} // Ouvrir le dialog
               >
-                  <Plus /> Ajouter une Plante
+                  <Plus /> Ajouter un Produit
               </Button>
             </DialogTrigger>
             <DialogContent> 

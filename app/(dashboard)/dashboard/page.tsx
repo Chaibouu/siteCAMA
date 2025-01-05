@@ -1,4 +1,5 @@
 
+import Unauthorized from '@/app/unauthorized'
 import React from 'react'
 
 
@@ -26,6 +27,7 @@ const page = () => {
     <div>
       {/* <ButtonAddCycle/> */}
       {/* <TableCycle title="Les Cycles" subTitle="Tout les cycles"/> */}
+      {/* <Unauthorized/> */}
     </div>
   )
 }

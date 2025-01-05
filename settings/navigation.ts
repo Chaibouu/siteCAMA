@@ -71,22 +71,34 @@ export interface NavigationItem {
 
 export const adminNavigation: NavigationItem[] = [
   {
-    title: "Plantes",
-    icon: "tabler:plant",
-    path: "/plante",
-    allowedRoles: ["ADMIN", "USER"],
+    title: "Produits",
+    icon: "eos-icons:product-classes",
+    path: "/produit",
+    allowedRoles: ["ADMIN"],
   },
   {
-    title: "Catégorie",
+    title: "Catégories",
     icon: "material-symbols:category",
     path: "/categori",
-    allowedRoles: ["ADMIN", "USER"],
+    allowedRoles: ["ADMIN"],
   },
   {
-    title: "Utilisateur",
-    icon: "mage:users",
+    title: "Utilisateurs",
+    icon: "mage:users-fill",
     path: "/utilisateur",
-    allowedRoles: ["ADMIN", "USER"],
+    allowedRoles: ["ADMIN"],
+  },
+  {
+    title: "Réalisations",
+    icon: "lets-icons:book-fill",
+    path: "/realisation",
+    allowedRoles: ["ADMIN"],
+  },
+  {
+    title: "Partenaires",
+    icon: "material-symbols:partner-exchange",
+    path: "/partenaire",
+    allowedRoles: ["ADMIN"],
   },
   // {
   //   title: "Dashboard",

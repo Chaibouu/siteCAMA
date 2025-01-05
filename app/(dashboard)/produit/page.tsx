@@ -12,7 +12,7 @@ const page = async () => {
       <div>
           <div className='flex items-center justify-end my-4'><ButtonAddPlant/></div>
           <div>
-            <TablePlant title={"Les plantes"} subTitle={"Tout les plantes"} plants={plant.plant}/>
+            <TablePlant title={"Les produits"} subTitle={"Tout les produits de la boutique"} plants={plant.plant}/>
           </div>
       </div>
     )

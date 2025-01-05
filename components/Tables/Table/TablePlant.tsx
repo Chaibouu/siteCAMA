@@ -38,7 +38,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
   }
 
   const { data } = useQuery({
-    queryKey: ["plants"],
+    queryKey: ["produits"],
     queryFn: Plant,
     initialData: plants,
   });
@@ -49,7 +49,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
    const columns: ColumnDef<plant>[] = [
     {
       accessorKey: "name",
-      header: "Plant",
+      header: "Produit",
       cell: ({ row }) => (
         <div className="">{row.getValue("name")}</div>
       ),
@@ -79,7 +79,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
             {imageUrl ? (
               <Image
                 src={imageUrl} // URL de l'image
-                alt="Image de la plante" // Texte alternatif
+                alt="Image du produit" // Texte alternatif
                 width={50} // Largeur de l'image
                 height={50} // Hauteur de l'image
                 className="rounded-full object-cover" // Classes CSS pour le style
@@ -98,7 +98,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
         return (
          <div className="flex gap-4">
           <Update><UpdatePlant plant={row.original}/></Update>
-          <Delete id={row.original.id} title="plants" deleteFnct={deletePlant}/>
+          <Delete id={row.original.id} title="produits" deleteFnct={deletePlant}/>
          </div>
         )
       },
@@ -119,7 +119,7 @@ const  TablePlant = ({title, subTitle, plants}: TableProps)=>{
       <DataTable<plant>
         data={data}
         columns={columns}
-        queryKey="plants"
+        queryKey="produits"
       />
     </div>
   );

@@ -56,7 +56,7 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
         mutationFn: postPlant,
         onSuccess: (data) => {
         if (data.message) {
-            queryClient.invalidateQueries({ queryKey: ['Plants'] });
+            queryClient.invalidateQueries({ queryKey: ['produits'] });
             setIsPending(false)
             toast(data.message, {
                 position: 'top-right',
@@ -123,7 +123,7 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
   return (
     <div>
         <Form {...form}>
-            <div><h1 className="text-2xl text-slate-500 font-bold text-center">Ajouter une Plante</h1></div>
+            <div><h1 className="text-2xl text-slate-500 font-bold text-center">Modifier un Produit</h1></div>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                  <div className="space-y-4">
                     {/* Champ : Nom */}
@@ -133,13 +133,13 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
                         render={({ field }) => (
                         <FormItem>
                             <FormLabel className="mt-2 text-lg text-slate-400 min-w-[200px]">
-                            Plante <b className="text-red-500">*</b>
+                            Produit <b className="text-red-500">*</b>
                             </FormLabel>
                             <FormControl>
                             <Input
                                 {...field}
                                 type="text"
-                                placeholder="Veuillez saisir le nom de la plante"
+                                placeholder="Veuillez saisir le nom du produit"
                                 disabled={isPending}
                                 className="bg-white"
                             />
@@ -264,7 +264,7 @@ const UpdatePlant = ({plant, categoriplants}:updateProps) => {
                                 ></path>
                             </svg>
                         ) : (
-                            "Ajouter une Plante"
+                            "Modifier un Produit"
                         )}
                     </Button>
                 </div>

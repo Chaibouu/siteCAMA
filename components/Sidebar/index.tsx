@@ -62,7 +62,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen,navigation }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-10 flex h-screen w-60 flex-col overflow-y-hidden bg-[#06b206] duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-10 flex h-screen w-60 flex-col overflow-y-hidden bg-BrunFonce duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -187,8 +187,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen,navigation }: SidebarProps) => {
                     <li key={index}>
                     <Link
                       href={item.path}
-                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-[#DF7413] dark:hover:bg-meta-4 ${
-                        pathname.includes(item.path) && 'bg-[#DF7413] dark:bg-meta-4'
+                      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-PrimaryCol hover:text-SecondaryCol dark:hover:bg-meta-4 ${
+                        pathname.includes(item.path) && 'bg-PrimaryCol text-SecondaryCol dark:bg-meta-4'
                       }`}
                     >
                       {/* ... (le reste de votre code pour afficher l'icône) */}

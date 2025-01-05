@@ -128,13 +128,13 @@ model UserDevice {
     createdAt DateTime @default(now()) // Date de la création de l'enregistrement
 }
 
-model Plant {
+model Produit {
   id          String   @id @default(uuid()) @map("id") // Identifiant unique
   name        String   @db.VarChar(255) // Nom de la plante
   price       String      // Prix de la plante en entier (en F)
   rating      Float?    @default(0.0) // Note moyenne (calculée)
   isDeleted   Boolean                @default(false)
-  imageUrl    String?   @db.Text // URL de l'image de la plante
+  imageUrl    String?   
   createdAt   DateTime @default(now()) // Date de création de l'enregistrement
   updatedAt   DateTime @updatedAt // Date de la dernière mise à jour
   
@@ -144,18 +144,44 @@ model Plant {
   category    Category @relation(fields: [categoryId], references: [id]) // Relation avec Category
 }
 
+model Realisation {
+  id          String   @id @default(uuid()) @map("id")
+  title       String   
+  subtitle    String?   
+  description String? 
+  date        String? 
+  lieu        String? 
+  media       String? 
+  mediaType   String?   
+  isDeleted   Boolean  @default(false)
+}
+model Partenaire {
+  id          String   @id @default(uuid()) @map("id")
+  name        String   
+  description String?   
+  imageUrl    String?   
+  isDeleted   Boolean  @default(false)
+}
+model Pub {
+  id          String   @id @default(uuid()) @map("id")
+  title       String   
+  subtitle    String?   
+  description String?  
+  imageUrl    String? 
+  isDeleted   Boolean  @default(false)
+}
 model Category {
   id          String   @id @default(uuid()) @map("id")
   name        String   @unique @db.VarChar(100) // Nom unique de la catégorie
-  isDeleted             Boolean                @default(false)
-  plants      Plant[]  // Relation inverse avec Plant
+  isDeleted   Boolean  @default(false)
+  produit     Produit[]  // Relation inverse avec Plant
 }
 
 model Rating {
   id          String    @id @default(uuid())
   value       Int       // Valeur de la note (1-5)
   userId      String?   // Optionnel : l'utilisateur qui a noté
-  plantId     String
-  plant       Plant     @relation(fields: [plantId], references: [id])
+  produitId   String
+  produit     Produit     @relation(fields: [produitId], references: [id])
   createdAt   DateTime  @default(now())
 }
