@@ -14,6 +14,7 @@ import DarkModeSwitcher from "../Header/DarkModeSwitcher";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import Configs from "@/configs/Configs";
 import appConfig from "@/settings";
+import { useSession } from "@/context/SessionContext";
 
 interface NavbarProps {
   // user: User;
@@ -22,7 +23,7 @@ interface NavbarProps {
 
 const Navbar = ({Links}:NavbarProps) => {
 
-  const user = useCurrentUser();
+  const user = useSession();
 
   console.log("=======")
   console.log(user)

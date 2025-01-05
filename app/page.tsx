@@ -18,7 +18,7 @@ const font = Poppins({
   weight: ["600"]
 })
 
-export default async function Home() {
+export default  function Home() {
   return (
     <>
       
