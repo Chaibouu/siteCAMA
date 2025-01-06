@@ -47,7 +47,7 @@ export default function HomePage() {
       </div>
 
       {/* Section des boutons de filtre */}
-      <div className="flex gap-4 mb-6 justify-center">
+      <div className="flex flex-wrap gap-4 mb-6 justify-center">
         <button
           onClick={() => setFilter("")}
           className={`px-4 py-2 rounded text-white ${

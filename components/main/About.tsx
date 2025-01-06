@@ -11,7 +11,7 @@ const About = () => {
       <div className='flex justify-center items-center'>
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start space-y-8 md:space-y-0 md:space-x-10">
           {/* Texte à gauche */}
-          <div className="md:w-1/2">
+          <div className="m-2 md:w-1/2">
             <h3 className="text-2xl font-semibold text-SecondaryCol mb-4 dark:text-PrimaryCol">C.A.M.A. (Compagnie Africaine pour la Modernisation de l'Agriculture)</h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
               <span className="font-semibold"><strong className='text-SecondaryCol dark:text-PrimaryCol'>Spécialisation :</strong></span> Production et vente de légumes et fruits. <br />
@@ -30,7 +30,7 @@ const About = () => {
           </div>
 
           {/* Images superposées à droite */}
-          <div className="relative md:w-1/2 h-[400px]">
+          <div className="relative md:w-1/2 h-[400px] hidden md:block">
             {/* Image principale */}
             <div className="absolute top-0 left-0 z-10">
               {/* <Image src="/logoo.png" alt="Image C.A.M.A. 1" width={300} height={300} className="rounded-lg shadow-lg h-[300px]" /> */}
@@ -47,6 +47,9 @@ const About = () => {
             <div className="absolute top-44 left-0 z-0">
               <Image src="/papaye.jpg" alt="Image C.A.M.A. 4" width={300} height={300} className="border border-slate-200 rounded-lg h-[300px]" />
             </div>
+          </div>
+          <div className="md:hidden">
+            <Image src="/papaye.jpg" alt="Image C.A.M.A. 4" width={300} height={300} className="border border-slate-200 rounded-lg h-[300px]" />
           </div>
         </div>
       </div>

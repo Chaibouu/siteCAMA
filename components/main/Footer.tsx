@@ -21,7 +21,7 @@ const Footer = () => {
     return (
         <>
             <div className=" bg-BrunFonce pt-1">
-                <div  className="flex items-center justify-around">
+                <div  className="flex hidden items-center justify-around md:block">
                     <div>
                         <Image
                             alt="Compagnie Africaine pour la modernisation de l'agriculture"
@@ -92,7 +92,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className=' w-full text-center text-white text-[12px] my-4'>
-                    <p>Copyright  © 2024-CAMA . Tous droits réservés.</p>
+                    <p>Copyright  © 2025-CAMA . Tous droits réservés.</p>
                 </div>
             </div>
         </>
