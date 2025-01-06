@@ -18,7 +18,7 @@ import appConfig from "@/settings";
 export const metadata: Metadata = {
   title: appConfig.websiteTitle,
   description: appConfig.websiteDescription,
-  keywords: ["semences","plantes","jardin","jardinier","suivi des champs","agriculture",
+  keywords: ["semences","plantes","jardin","jardinier","Projet Agricoles","Agriculture aux Niger","suivi des champs","agriculture",
              "boutique en ligne","services agricoles","partenaires","réalisations",],
   authors: [{ name: "CAMA, C.A.M.A, Compagnie Africaine pour la modernisation de l'agriculture" }],
   viewport: "width=device-width, initial-scale=1.0",
