@@ -25,9 +25,6 @@ const Navbar = ({Links}:NavbarProps) => {
 
   const user = useSession();
 
-  console.log("=======")
-  console.log(user)
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [userr, setUser] = useState();
   const pathname = usePathname();

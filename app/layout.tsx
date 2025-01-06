@@ -14,6 +14,25 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: appConfig.websiteTitle,
   description: appConfig.websiteDescription,
+  keywords: ["semences","plantes","jardin","jardinier","suivi des champs","agriculture",
+             "boutique en ligne","services agricoles","partenaires","réalisations",],
+  authors: [{ name: "CAMA, C.A.M.A, Compagnie Africaine pour la modernisation de l'agriculture" }],
+  viewport: "width=device-width, initial-scale=1.0",
+  openGraph: {
+    title: "Accueil | C.A.M.A - Vente de Semences & Suivi des Champs",
+    description:
+      "Explorez notre boutique en ligne pour des semences de qualité, découvrez nos services agricoles et parcourez nos projets réalisés.",
+    url: "https://CAMA.com",
+    type: "website",
+    images: [
+      {
+        url: "/logoo.png",
+        width: 1200,
+        height: 630,
+        alt: "Logo de CAMA",
+      },
+    ],
+  }
 };
 
 export default async function RootLayout({
