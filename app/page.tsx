@@ -1,5 +1,3 @@
-'use client'
-
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { Links } from "@/settings/navigation";
