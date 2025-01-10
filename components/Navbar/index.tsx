@@ -24,7 +24,6 @@ interface NavbarProps {
 const Navbar = ({Links}:NavbarProps) => {
 
   const user = useSession();
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [userr, setUser] = useState();
   const pathname = usePathname();
@@ -79,7 +78,7 @@ const Navbar = ({Links}:NavbarProps) => {
 
 
           <div className="">
-            <ul className={`me-2 lg:flex lg:items-center lg:bg-transparent bg-white lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-1] w-full lg:w-[70%] xl:w-[60%] 2xl:w-[50%] lg:pl-0 pl-9 transition-all duration-500 ease-in ${menuOpen? 'top-0 pt-10 opacity-100 w-[100%]':'top-[-490px] lg:opacity-100 opacity-0'}`}>
+            <ul className={`me-2 lg:flex lg:items-center lg:bg-transparent bg-white lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-1] w-full lg:w-[70%] xl:w-[60%] 2xl:w-[50%] lg:pl-0 pl-9 transition-all duration-500 ease-in ${menuOpen? 'top-0 left-0 pt-10 opacity-100 w-[100%] dark:bg-DarkCol':'top-[-490px] left-0 lg:opacity-100 opacity-0'}`}>
             {/* <ul
               className={`me-2 lg:flex lg:items-center lg:bg-transparent bg-white lg:pb-0 pb-12 
               absolute lg:static lg:z-auto z-[-1] w-full lg:w-auto pl-9 transition-all 
@@ -102,10 +101,32 @@ const Navbar = ({Links}:NavbarProps) => {
               ) : (
                 <li className="text-center">No links available</li>
               )}
+              <div className={`md:hidden ${menuOpen? 'block':'hidden'}`}>
+                <div className="flex items-center justify-end gap-6 pr-10">
+                  <span className="me-6">
+                    {/* <ModeToggle/> */}
+                    <DarkModeSwitcher />
+                  </span>
+                  <div className="">
+                    {user.isAuthenticated? 
+                      (<span>
+                        <DropdownUser />
+                      </span>)
+                      :(
+                      <LoginButton mode="modal">  
+                        <div className="bg-[#098084] rounded-lg text-white fond-bold py-2 px-6 hover:bg-[#098084] dark:bg-white dark:text-black">
+                          Sign in
+                        </div>
+                      </LoginButton>
+                      )
+                    }
+                  </div>
+                </div>
+              </div>
             </ul>
           </div>
           <div className="flex items-center justify-around pr-[70px] lg:pr-[5px] md:me-4 lg:me-4">
-            <span className="me-6">
+            <span className="me-6 hidden md:block">
               {/* <ModeToggle/> */}
               <DarkModeSwitcher />
             </span>
@@ -114,26 +135,27 @@ const Navbar = ({Links}:NavbarProps) => {
                 <DropdownUser />
               </span> */}
                 
-              <LoginButton mode="modal">  
+              {/* <LoginButton mode="modal">  
                 <div className="bg-Es_primary rounded-lg text-white fond-bold py-2 px-6 bg-[#098084] hover:bg-[#098084] dark:bg-white dark:text-black">
                   Sign in
                 </div>
-              </LoginButton>
+              </LoginButton> */}
 
-            {/* {user? 
-              (<span>
-                <DropdownUser />
-              </span>)
-              :(
-                // <button className="bg-Es_primary rounded-lg text-white fond-bold py-2 px-6 dark:bg-slate-500">Signin</button>
-                
-              <LoginButton mode="modal">  
-                <div className="bg-Es_primary rounded-lg text-white fond-bold py-2 px-6 hover:bg-[#098084] dark:bg-white dark:text-black">
-                  Sign in
-                </div>
-              </LoginButton>
-              )
-            } */}
+            <div className="hidden md:block">
+              {user.isAuthenticated? 
+                (<span>
+                  <DropdownUser />
+                </span>)
+                :(
+                  // <button className="bg-Es_primary rounded-lg text-white fond-bold py-2 px-6 dark:bg-slate-500">Signin</button>
+                <LoginButton mode="modal">  
+                  <div className="bg-[#098084] rounded-lg text-white fond-bold py-2 px-6 hover:bg-[#098084] dark:bg-white dark:text-black">
+                    Sign in
+                  </div>
+                </LoginButton>
+                )
+              }
+            </div>
           </div>
       
       </div>

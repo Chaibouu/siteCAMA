@@ -102,8 +102,17 @@ const DropdownUser = () => {
         <ul className="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
           <li>
             <Link
-              href="dashboard/profile"
-              className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+              href="/dashboard"
+              className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-gray-400 lg:text-base"
+            >
+              <Icon icon="material-symbols:dashboard-outline" width="22" height="22" />
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/profile"
+              className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-gray-400 lg:text-base"
             >
               <svg
                 className="fill-current"
@@ -129,7 +138,7 @@ const DropdownUser = () => {
           <li>
             <Link
               href="/dashboard/settings"
-              className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+              className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-gray-400 lg:text-base"
             >
               <svg
                 className="fill-current"
@@ -154,7 +163,7 @@ const DropdownUser = () => {
         </ul>
         <LogoutButton>
 
-          <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+          <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-gray-400 lg:text-base"
           >
             <svg
               className="fill-current"

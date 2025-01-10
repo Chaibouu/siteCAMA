@@ -182,9 +182,9 @@ export const partenaires = [
   },
   {
     id: 3,
-    name: "Partenaire C",
-    logo: "/logoo.png",
-    description: "Leader en innovation technologique pour les cultures.",
+    name: "SahelCoders",
+    logo: "/sahel_coders_logo.png",
+    description: "Association de jeune développeur en innovation technologique.",
   },
   {
     id: 4,

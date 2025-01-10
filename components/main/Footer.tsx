@@ -21,7 +21,7 @@ const Footer = () => {
     return (
         <>
             <div className=" bg-BrunFonce pt-1">
-                <div  className="flex hidden items-center justify-around md:block">
+                <div  className="flex items-center justify-around hidden md:flex">
                     <div>
                         <Image
                             alt="Compagnie Africaine pour la modernisation de l'agriculture"
@@ -55,7 +55,7 @@ const Footer = () => {
                         <a href=''>Politique en matière de cookies</a>
                         <a href=''>Notification de droits d'auteur</a>
                     </div>
-                    <div>
+                    <div className='hidden lg:block'>
                         <div className={`space-y-2 mt-2`} >
                             <span className='my-4'>
                                 <h4 className='mb-Z text-white underline'>SUIVEZ-NOUS</h4>
