@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { authorize } from "@/settings/authorization";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {storage} from "@/firebase/firebase"
 
 
 
@@ -30,8 +28,6 @@ export async function GET(req: NextRequest) {
 }
 
 
-
-
 export async function POST(req: NextRequest) {
   const authError = await authorize(req, "/api/produit");
   if (authError) return authError;
@@ -41,7 +37,10 @@ export async function POST(req: NextRequest) {
 
     // Vérifier si la requête contient un multipart/form-data
     if (!contentType.includes("multipart/form-data")) {
-      return NextResponse.json({ error: "Le format multipart/form-data est requis" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Le format multipart/form-data est requis" },
+        { status: 400 }
+      );
     }
 
     // Lire le corps de la requête
@@ -58,26 +57,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Le prix est requis" }, { status: 400 });
     }
     if (!categoryId) {
-      return NextResponse.json({ error: "La catégorie est requise" }, { status: 400 });
+      return NextResponse.json(
+        { error: "La catégorie est requise" },
+        { status: 400 }
+      );
     }
     if (!image) {
-      return NextResponse.json({ error: "L'image est requise" }, { status: 400 });
+      return NextResponse.json(
+        { error: "L'image est requise" },
+        { status: 400 }
+      );
     }
 
-    // Vérification si une plante avec le même nom existe
-    const existingPlant = await db.produit.findFirst({
+    // Vérification si un produit avec le même nom existe
+    const existingProduct = await db.produit.findFirst({
       where: { name },
     });
 
-    if (existingPlant) {
-      if (existingPlant.isDeleted) {
-        const reactivatedPlant = await db.produit.update({
-          where: { id: existingPlant.id },
+    if (existingProduct) {
+      if (existingProduct.isDeleted) {
+        const reactivatedProduct = await db.produit.update({
+          where: { id: existingProduct.id },
           data: { isDeleted: false },
         });
 
         return NextResponse.json(
-          { produit: reactivatedPlant, message: "La plante a été réactivée avec succès" },
+          { produit: reactivatedProduct, message: "Le produit a été réactivé avec succès" },
           { status: 200 }
         );
       } else {
@@ -88,30 +93,19 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // **Envoyer l'image dans Firebase Storage**
-    const folderName = "produits"; // Nom du dossier dans Firebase
-    const timestamp = Date.now(); // Pour rendre les noms de fichiers uniques
-    const filename = `${timestamp}-${image.name}`;
-    const storageRef = ref(storage, `${folderName}/${filename}`);
-    const arrayBuffer = await image.arrayBuffer();
-    const uint8Array = new Uint8Array(arrayBuffer);
-
-    // Upload de l'image
-    await new Promise<string>((resolve, reject) => {
-      const uploadTask = uploadBytesResumable(storageRef, uint8Array);
-
-      uploadTask.on(
-        "state_changed",
-        null, // Progression (facultatif)
-        (error) => reject(error),
-        () => resolve("Upload réussi")
-      );
+    // Utiliser claudinary pour télécharger l'image
+    const formDataa = new FormData();
+    formDataa.append("file", image);
+    formDataa.append("upload_preset", "site-cama");
+    const res = await fetch("https://api.cloudinary.com/v1_1/duxfrfqd0/image/upload", {
+      method: "POST",
+      body: formDataa,
     });
+    const data = await res.json();
+    const imageUrl = data.secure_url;
 
-    // Récupérer l'URL de téléchargement
-    const imageUrl = await getDownloadURL(storageRef);
 
-    // Enregistrer la plante dans la base de données
+    // Enregistrer le produit dans la base de données
     const produit = await db.produit.create({
       data: {
         name,
@@ -122,7 +116,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { produit, message: "Le produit a été créée avec succès" },
+      { produit, message: "Le produit a été créé avec succès" },
       { status: 201 }
     );
   } catch (error) {

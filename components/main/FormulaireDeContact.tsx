@@ -133,7 +133,6 @@ function FormulaireDeContact() {
               />
             </div>
           </div>
-
           <FormError message={error} />
           <FormSuccess message={success} />
           <div className="flex items-center justify-end">

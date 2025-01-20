@@ -45,3 +45,30 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 
   await transporter.sendMail(mailOptions);
 };
+
+export const sendContactEmail = async (email: string,nom: string, prenom: string, message: string ) => {
+
+  const mailOptions = {
+    from: `${appConfig.appName} <${emailUser}>`,
+    to: email,
+    subject: `Message client : ${nom} ${prenom}`,
+    // html: `<p>Message de ${nom} ${prenom} </br> : ${message}</br>`,
+    html: `
+    <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
+      <h2 style="color: #256E4A;">Nouveau message de ${nom} ${prenom}</h2>
+      <p><strong>Nom :</strong> ${nom}</p>
+      <p><strong>Prénom :</strong> ${prenom}</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0;" />
+      <p><strong>Message :</strong></p>
+      <p style="margin-left: 20px; font-style: italic; color: #555;">"${message}"</p>
+      <hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0;" />
+      <p style="font-size: 12px; color: #888;">
+        Cet email a été généré automatiquement par ${appConfig.appName}. Veuillez ne pas répondre à ce message.
+      </p>
+    </div>
+  `,
+  };
+
+  await transporter.sendMail(mailOptions);
+};

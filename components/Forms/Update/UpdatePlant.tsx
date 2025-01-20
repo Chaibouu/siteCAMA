@@ -38,6 +38,9 @@ const UpdatePlant = ({produit, categoriplants}:updateProps) => {
     const [isSearchable, setIsSearchable] = useState(true);
     const [isDisabled, setIsDisabled] = useState(false);
     const queryClient = useQueryClient();
+    console.log(produit);
+    console.log(produit.id);
+    const idd = produit.id;
 
     const CategoriPlant = async () => {
         let res = await fetchCategoriPlant()
@@ -86,6 +89,7 @@ const UpdatePlant = ({produit, categoriplants}:updateProps) => {
         },
     });
 
+
     const defaultValue = {
         name: produit.name || '',
         price: produit.price || '',
@@ -103,6 +107,7 @@ const UpdatePlant = ({produit, categoriplants}:updateProps) => {
     const onSubmit = async (data: z.infer<typeof PlantSchema>) => {
         setIsPending(true);
         const formData = new FormData();
+        formData.append("id", idd);
         formData.append("name", data.name);
         formData.append("price", data.price);
         formData.append("categoryId", data.categoryId);
@@ -112,7 +117,7 @@ const UpdatePlant = ({produit, categoriplants}:updateProps) => {
         }
 
         try {
-        mutation.mutate(formData)
+        mutation.mutate({ body: formData, id: idd })
         } catch (error:any) {
         toast(error)
         }

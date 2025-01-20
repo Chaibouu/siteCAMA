@@ -54,11 +54,11 @@ export const permissions: Record<string, Permission[]> = {
     { method: "DELETE", roles: ["ADMIN", "USER"] },
   ],
 
-  "/api/plant": [
+  "/api/produit": [
     { method: "POST", roles: ["ADMIN", "USER"] },
     { method: "GET", roles: ["ADMIN", "USER"] },
   ],
-  "/api/plant/:id": [
+  "/api/produit/:id": [
     { method: "PUT", roles: ["ADMIN", "USER"] },
     { method: "DELETE", roles: ["ADMIN", "USER"] },
   ],

@@ -1,7 +1,7 @@
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { storage } from './firebase';
 
-const addFile = async (file, folderName, filename) => {
+export const addFile = async (file, folderName, filename) => {
     const storageRef = ref(storage, `${folderName}/${filename}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -38,4 +38,4 @@ const deleteFile = async (fileURL) => {
     await deleteObject(fileRef);
 };
 
-export { addFile, updateFile, deleteFile };
+export {  updateFile, deleteFile };
