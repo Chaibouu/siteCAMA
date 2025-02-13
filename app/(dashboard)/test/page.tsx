@@ -14,6 +14,9 @@ const page =
       {
         JSON.stringify(user)
       }
+      <div>
+        <h1>titre de la page test</h1>
+      </div>
     </div>
   )
 }
