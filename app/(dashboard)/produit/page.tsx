@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 
 const page = async () => {
     const produit = await fetchProduit()
+    // const produit = await fetchProduit()
     
     return (
       <div>
